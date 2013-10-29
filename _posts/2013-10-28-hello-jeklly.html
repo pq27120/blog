@@ -9,12 +9,17 @@ title: jeklly的艰难搭建过程
 </p>
 <p>
 	参考的是阮一峰大牛的教程，写的很细，按照一步一步来就行了http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html。其中有个要注意的地方：<br/>
-	<img src="/image/2013_10_28/20131028_1.jpg"/><br/>
+	<img src="{{site.img_url}}/2013_10_28/20131028_1.jpg"/><br/>
 	这里行首不能有空格,<font style="color:red;">layout: default</font>中间一定要有一个空格,要不然就会像我一样半天跑不起来。
 	在大牛的博客留言里面，有好几个也说报404错误，我估计很有可能是这个原因导致的，这个也算是大牛留的一个小坑吧，嘿嘿。
 	截图show下我的blog，很简陋，不过总算是整出来了，还是很有成就感的。<br/>
-	<img src="/image/2013_10_28/20131028_2.jpg"/><br/>
+	<img src="{{site.img_url}}/2013_10_28/20131028_2.jpg"/><br/>
 </p>
 <p>
 	测试博客已经搭建好，现在打算把博客的地址更换一下，换成XX.hitgub.io/blog，不折腾不舒坦，直接到hitgub上面的setting里rename就行了,记得要把_config.yml的baseurl: /jekyll_demo改成baseurl: /blog，好的，commit、push后可以看看效果。
 <p>
+<p>
+	图片无法显示出来，现在看看jekyll怎么处理图片。<br/>
+	参照网上实例实现：
+	站点需要的图片直接存放在assets/images文件夹中，可以在_config.yml中定义一个形如img_url: http://jiyeqian.github.com/assets/images的变量，然后在html文件需要用到图片的地方插入类似({{ site.img_url }}/2012-06-27-git-transport.png)的代码即可显示图像。
+</p>

@@ -23,3 +23,9 @@ title: jeklly的艰难搭建过程
 	参照网上实例实现：
 	站点需要的图片直接存放在assets/images文件夹中，可以在_config.yml中定义一个形如img_url: http://jiyeqian.github.com/assets/images的变量，然后在html文件需要用到图片的地方插入类似({{ site.img_url }}/2012-06-27-git-transport.png)的代码即可显示图像。
 </p>
+
+<p><strong>域名绑定：</strong></p>
+<p>在http://http://www.dot.tk注册一个免费域名，替换http://username.github.io/blog这个链接。</p>
+<p>方法是在repo的根目录下面，新建一个CNAME的文本文件，里面写入要绑定的域名，比如example.com等。</p><br/>
+
+<p>如果绑定的是顶级域名，则DNS要新建一条A记录，指向204.232.175.78.如果绑定的是二级域名，则DNS要新建一条CNAME记录，指向username.github.com，另外，还要将_config.yml里面的baseurl改成根目录“/”。</p>

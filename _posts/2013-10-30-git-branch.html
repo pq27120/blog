@@ -1,0 +1,114 @@
+---
+layout: default
+title: git版本管理
+---
+
+<h1>{{page.title}}</h1>
+<p>参考了阮大师的<a href="http://www.ruanyifeng.com/blog/2012/07/git.html">git分之管理策略</a>。</p>
+<p><strong>1、主分支Master</strong></p>
+<p>代码库有且只能有一个主分支，所有提供给用户的正式版本，都在主分支上面发布。</p>
+<p><img src="{{site.img_url}}/2013_10_30/2013103001.png"/></p>
+<p>git主分支的名字默认就叫做Master</p>
+
+<p><strong>2、开发分支Develop</strong></p>
+<p>主分支只用了发布重大版本，平时日常开发在Develop上完成。</p>
+<p><img src="{{site.img_url}}/2013_10_30/2013103002.png"/></p>
+<p>这个分支可以用来产生最新的隔夜版本（nightly），如果想对外发布，需要在Master分支上对Develop分支进行合并（merge）。</p>
+<p>git创建Develop分支的命令；</p>
+<blockquote>
+	<p>git checkout -b develop master</p>
+</blockquote>
+<p>将Develop分支发布到Master分支的命令：</p>
+<blockquote>
+<p>#切换到Master分支<br/>git checkout master</p>
+<p>#对Develop分支进行合并<br/>git merge --no-ff develop</p>
+</blockquote>
+<p>--no-ff参数解释：默认情况下，Git执行“快进式合并”（fast-forward merge),直接将Master分支指向Develop分支。</p>
+<p><img src="{{site.img_url}}/2013_10_30/2013103003.png"/></p>
+<p>使用--no-ff参数后，会正常合并，在Master分支上生成一个新节点。</p>
+<p><img src="{{site.img_url}}/2013_10_30/2013103004.png"/></p>
+
+<p><strong>3、临时性分支</strong></p>
+<p>临时性分支有三种：</p>
+<blockquote>
+<p>*功能(feature)分支<br/>
+   *预发布（release）分支<br/>
+   *修补bug(fixbug)分支
+</p>
+</blockquote>
+<p>这三种分支都是临时需要，使用后应该及时删除，代码库常用分支只有Master和Develop。</p>
+
+<p><strong>4、功能分支</strong></p>
+<p>功能分支是从Develop分支上分出来的，开发完成以后，要再并入Develop。</p>
+<p><img src="{{site.img_url}}/2013_10_30/2013103005.png"/></p>
+<p>功能分支的名字采用feature-*命名。</p>
+<p>创建一个功能分支：</p>
+<blockquote>
+ <p>git checkout -b feature-x develop</p>
+</blockquote>
+<p>开发完成后，将功能分支合并到开发分支：</p>
+<blockquote>
+ <p>
+ 	git checkout develop<br/>
+ 	git merge --no-ff feature-x
+ </p>
+</blockquote>
+<p>删除feature分支</p>
+<blockquote>
+	<p>git branch -d feature-x</p>
+</blockquote>
+
+<p><strong>5、预发布分支</strong></p>
+<p>指发布到正式版本之前，可能需要的一个预发布版本进行测试。</p>
+<p>预发布分支是从Develop分支上面分出来的，预发布结束之后，必须和并进Develop和Master分支，命名采用release-*。</p>
+<p>创建一个预发布分支：</p>
+<blockquote>
+ <p>git checkout -b release-1.2 develop</p>
+</blockquote>
+<p>确认后，合并到Master分支：</p>
+<blockquote>
+ <p>
+ 	git checkout master<br/>
+ 	git merge --no-ff release-1.2<br/>
+ 	#对合并生成的新节点，做一个标签<br/>
+ 	git tag -a 1.2
+ </p> 
+</blockquote>
+<p>再合并到Develop分支：</p>
+<blockquote>
+<p>git checkout develop<br/>
+   git merge --no-ff release-1.2
+</p>
+</blockquote>
+<p>删除预发布分支</p>
+<blockquote>
+	<p>git branch -d release-1.2</p>
+</blockquote>
+
+<p><strong>6、修补bug分支</strong></p>
+<p>进行bug修补。</p>
+<p>修补bug分支是从Master分支上分出来的，修补完成后，和并进Master和Develop分支。命名采用fixbug-*的形式。</p>
+<p><img src="{{site.img_url}}/2013_10_30/2013103006.png"/></p>
+<p>创建一个修改bug分支</p>
+<blockquote>
+   <p>git checkout -b fixbug-0.1 master</p>
+</blockquote>
+<p>修补结束后合并到Master分支：</p>
+<blockquote>
+    <p>git checkout master<br/>
+       git merge --no-ff fixbug-0.1<br/>
+       git tag -a 0.1.1
+    </p>
+</blockquote>
+<p>再合并到Develop分支：</p>
+<blockquote>
+    <p>git checkout develop<br/>
+       git merge --no-ff fixbug-0.1	
+    <p>
+</blockquote>
+<p>删除bug分支：</p>
+<blockquote>
+    <p>
+    	git branch -d fixbug-0.1
+    </p>
+</blockquote>

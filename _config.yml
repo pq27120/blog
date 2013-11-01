@@ -1,2 +1,5 @@
 baseurl: /
 img_url: http://www.pqlink.tk/assets/images
+
+analytics:
+ provider: custom

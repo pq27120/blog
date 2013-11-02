@@ -2,8 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="/css/bootstrap.css">
-	<link ref="stylesheet" href="/css/bootstrap-theme.css">	
+	<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.1/css/bootstrap.css">
+	<link ref="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.1/css/bootstrap-theme.css">	
+	<style ref="stylesheet">
+		.bs-footer{
+			padding-top: 40px;
+			padding-bottom: 30px;
+			margin-top: 5px;
+			color: #777;
+			text-align: center;			
+		}
+	</style>
 	<title>{{page.title}}</title>
 </head>
 <body>
@@ -39,8 +48,8 @@
 		</div>
 	</div>
 	<script src="http://code.jquery.com/jquery.js"></script>
-	<script src="/js/bootstrap.js"></script>
-	<footer>		
+	<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.1/js/bootstrap.js"></script>
+	<footer class="bs-footer">		
 		{% include custom/analytics.js %}		
 	</footer>		
 </body>

@@ -15,49 +15,18 @@ title: 我的博客
 		<ul class="pager">
 			<li>
 				{% if paginator.previous_page %}
-				<a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">前一页</a>
+				<a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="previous">&larr;前一页</a>
 				{% else %}
-				<a href="#" class="disabled">前一页</a>
+				<a href="#" class="previous disabled">前一页</a>
 				{% endif %}
 			</li>
 			<li>
 				{% if paginator.next_page %}
-				<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">后一页</a>
+				<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="next">&rarr;后一页</a>
 				{% else %}
-				<a href="#" clsss="disabled">后一页</a>
+				<a href="#" clsss="next disabled">后一页</a>
 				{% endif %}
 			</li>
-		</ul>
-
-		<ul class="pagination">
-			{% for page in (1..paginator.total_pages) %}
-			{% if paginator.previous_page %}
-			<li class="disabled">
-				<a href="#">&laquo;</a>
-			</li>
-			{% endif %}
-			{% if page == paginator.page %}
-			<li class="active">
-				<a href="#">
-					{{page}}
-					<span class="sr-only">(current)</span>
-				</a>
-			</li>
-			{% elsif page == 1 %}
-			<li class="active">
-				<a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
-			</li>
-			{% else %}
-			<li>
-				<a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-			</li>
-			{% endif %}
-			{% if paginator.next_page %}
-			<li class="disabled">
-				<a href="#">&raquo;</a>
-			</li>
-			{% endif %}
-			{% endfor %}
 		</ul>		
 	</div>
 </ul>

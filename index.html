@@ -10,4 +10,27 @@ title: 我的博客
 	<li>{{post.date|date_to_string}}<a href="{{post.url}}">{{post.title}}</a></li>
 
 	{%endfor%}
+
+	{%for post in paginator.posts %}
+	 <h1>
+	 	<a href="{{post.url}}">{{post.title}}</a>
+	 	<p class="author"><span class="date">{{post.date}}</span></p>
+	 	<div class="content">{{post.content}}</div>
+	 </h1>
+	{%endfor%}
+
+	<span class="page_number">第{{paginator.page}}页/总{{paginator.total_pages}}页</span>
+
+	<div class="pagination">
+		{% if paginator.previous_page %}
+		<a href="/page{{paginator.previous_page}}" class="previous">前一页</a>
+		{% else %}
+		<span class="previous">前一页</span>
+		{% endif %}
+		{% if paginator.next_page %}
+		<a href="/page{{paginator.next_page}}" class="next">后一页</a>
+		{% else %}
+		<span class="previous">后一页</span>
+		{% endif %}
+	</div>
 </ul>

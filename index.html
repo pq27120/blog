@@ -5,33 +5,59 @@ title: 我的博客
 <h2>{{page.title}}</h2>
 <p>最新文章</p>
 <ul>
-	{%for post in site.posts%}
-	<li>
-		{{post.date|date_to_string}}
-		<a href="{{post.url}}">{{post.title}}</a>
-	</li>
-	{%endfor%}
-
 	{%for post in paginator.posts %}
 	<li>
 		{{post.date|date_to_string}} >>
 		<a href="{{post.url}}">{{post.title}}</a>
 	</li>
 	{%endfor%}
-	<ul class="pager">
-		<li>
+	<div>
+		<ul class="pager">
+			<li>
+				{% if paginator.previous_page %}
+				<a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">前一页</a>
+				{% else %}
+				<a href="#" class="disabled">前一页</a>
+				{% endif %}
+			</li>
+			<li>
+				{% if paginator.next_page %}
+				<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">后一页</a>
+				{% else %}
+				<a href="#" clsss="disabled">后一页</a>
+				{% endif %}
+			</li>
+		</ul>
+
+		<ul class="pagination">
+			{% for page in (1..paginator.total_pages) %}
 			{% if paginator.previous_page %}
-			<a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">前一页</a>
-			{% else %}
-			<a href="#" class="disabled">前一页</a>
+			<li class="disabled">
+				<a href="#">&laquo;</a>
+			</li>
 			{% endif %}
-		</li>
-		<li>
+			{% if page == paginator.page %}
+			<li class="active">
+				<a href="#">
+					{{page}}
+					<span class="sr-only">(current)</span>
+				</a>
+			</li>
+			{% elsif page == 1 %}
+			<li class="active">
+				<a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+			</li>
+			{% else %}
+			<li>
+				<a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+			</li>
+			{% endif %}
 			{% if paginator.next_page %}
-			<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">后一页</a>
-			{% else %}
-			<a href="#" clsss="disabled">后一页</a>
+			<li class="disabled">
+				<a href="#">&raquo;</a>
+			</li>
 			{% endif %}
-		</li>
+			{% endfor %}
+		</ul>		
 	</div>
 </ul>

@@ -29,4 +29,121 @@ title: jekyll学习之变量
 </table>
 
 <p><strong>Site变量</strong></p>
+<table class="table">
+	<tr>
+		<th>变量名称</th>
+		<th>描述</th>
+	</tr>
+	<tr>
+		<td>site.time</td>
+		<td>当前时间</td>
+	</tr>
+	<tr>
+		<td>site.pages</td>
+		<td>页面列表</td>
+	</tr>
+	<tr>
+		<td>site.posts</td>
+		<td>按照时间降序排列的文件列表（_posts文件夹里面的文件)</td>
+	</tr>
+	<tr>
+		<td>site.related_posts</td>
+		<td>最相关的10个文件列表（_posts文件夹里面的文件）</td>
+	</tr>
+	<tr>
+		<td>site.categories.CATEGORY</td>
+		<td>类名名称为CATEGORY下面的所有文件列表</td>
+	</tr>
+	<tr>
+		<td>site.tags.TAG</td>
+		<td>tag名称为TAG的文件列表</td>
+	</tr>
+	<tr>
+		<td>site.[CONFIGURATION_DATA]</td>
+		<td>_config.yml自定义变量，例如：配置url：http://mysite.com，在页面和Posts里面可以用site.url引用。</td>
+	</tr>
+</table>
 
+<p><strong>Page变量</strong></p>
+<table class="table">
+	<tr>
+		<td>page.content</td>
+		<td>页面内容</td>
+	</tr>
+	<tr>
+		<td>page.title</td>
+		<td>页面标题</td>
+	</tr>
+	<tr>
+		<td>page.excerpt</td>
+		<td>页面摘录</td>
+	</tr>
+	<tr>
+		<td>page.url</td>
+		<td>页面路径，例如/2009/12/03/my-post.html</td>
+	</tr>
+	<tr>
+		<td>page.date</td>
+		<td>日期，可以格式化，例如YYYY-MM-DD HH:MM:SS</td>
+	</tr>
+	<tr>
+		<td>page.id</td>
+		<td>页面唯一标识，用于RSS订阅，例如：/2008/12/12/my-post</td>
+	</tr>
+	<tr>
+		<td>page.categories</td>
+		<td>当前POST所属的类别，类别是根据POST文件的目录结构来划分的，例如，一个/work/code/_posts/2008_12_14-closuers.html会属于['work','code'],也可以在YAML Front Matter自定义</td>
+	</tr>
+	<tr>
+		<td>page.tags</td>
+		<td>当前POST所属的标签，也可以在YAML Front Matter里面自定义</td>
+	</tr>
+	<tr>
+		<td>page.path</td>
+		<td>指向没有渲染的POST或者页面的路径，例如：指向在github上的POST或者页面源码。这个变量可以在YAML Front Matter覆盖。</td>
+	</tr>
+</table>
+
+<div class="alert alert-info">任何自定义的front matter都可以用page变量引用，例如，如果在page front matter里面定义cust_css: true，就可以用page.cust_css引用该值</div>
+
+<p><strong>paginator变量</strong></p>
+<table class="table">
+	<tr>
+		<td>paginator.per_page</td>
+		<td>每一页的Post数量</td>
+	</tr>
+	<tr>
+		<td>paginator.posts</td>
+		<td>当前页的POST数目</td>
+	</tr>
+	<tr>
+		<td>paginator.total_posts</td>
+		<td>posts的总条数</td>
+	</tr>
+	<tr>
+		<td>paginator.total_pages</td>
+		<td>Pages总数</td>
+	</tr>
+	<tr>
+		<td>paginator.page</td>
+		<td>当前页面记录数</td>
+	</tr>
+	<tr>
+		<td>paginator.previous_page</td>
+		<td>前一页</td>
+	</tr>
+	<tr>
+		<td>paginator.previous_page_path</td>
+		<td>前一页的url</td>
+	</tr>
+	<tr>
+		<td>paginator.next_page</td>
+		<td>后一页</td>
+	</tr>
+	<tr>
+		<td>paginator.next_page_path</td>
+		<td>后一页url</td>
+	</tr>
+</table>
+
+<div class="alert alert-info">Paginator参数只能在index文件中使用，包括子文件夹的默认页，例如：/blog/index.html。</div>

@@ -23,12 +23,12 @@ title: 我的博客
 			</li>
 			{% endif %}
 			
-				{% if paginator.next_page %}
+			{% if paginator.next_page %}
 			<li class="next">
 				<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">后一页&rarr;</a>
 			</li>
 			{% else %}
-			<li clsss="next disabled">
+			<li class="next disabled">
 				<a href="#">后一页&rarr;</a>
 			</li>
 			{% endif %}

@@ -1,0 +1,32 @@
+---
+layout: bootstrap_layout
+title: jekyll学习之变量
+---
+
+<h2>{{page.title}}</h2>
+<p>jekyll会遍历所有文件，来处理其中包含YAML Front Matter的对象。通过Liquid模板系统把其中的对象转化为一系列可用的数据。下面是这些数据的一个参考文档。</p>
+<table class="table">
+	<tr>
+		<th>变量名称</th>
+		<th>描述</th>
+	</tr>
+	<tr>
+		<td>site</td>
+		<td>_config.yml文件里的相关配置信息。</td>
+	</tr>
+	<tr>
+		<td>page</td>
+		<td>包括页面的配置信息和YAML信息。</td>
+	</tr>
+	<tr>
+		<td>content</td>
+		<td>POST或者被包含页面的内容</td>
+	</tr>
+	<tr>
+		<td>paginator</td>
+		<td>设置了paginate变量才生效。</td>
+	</tr>
+</table>
+
+<p><strong>Site变量</strong></p>
+

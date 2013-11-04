@@ -21,14 +21,14 @@ title: 我的博客
 	<ul class="pager">
 		<li>
 			{% if paginator.previous_page %}
-			<a href="/page{{paginator.previous_page}}">前一页</a>
+			<a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">前一页</a>
 			{% else %}
 			<a href="#" class="disabled">前一页</a>
 			{% endif %}
 		</li>
 		<li>
 			{% if paginator.next_page %}
-			<a href="/page{{paginator.next_page}}">后一页</a>
+			<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">后一页</a>
 			{% else %}
 			<a href="#" clsss="disabled">后一页</a>
 			{% endif %}

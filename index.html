@@ -13,20 +13,25 @@ title: 我的博客
 	{%endfor%}
 	<div>
 		<ul class="pager">
-			<li>
-				{% if paginator.previous_page %}
-				<a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="previous">&larr;前一页</a>
-				{% else %}
-				<a href="#" class="previous disabled">&larr;前一页</a>
-				{% endif %}
+			{% if paginator.previous_page %}
+			<li class="previous">
+				<a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr;前一页</a>
 			</li>
-			<li>
+			{% else %}
+			<li class="previous disabled">
+				<a href="#">&larr;前一页</a>
+			</li>
+			{% endif %}
+			
 				{% if paginator.next_page %}
-				<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="next">后一页&rarr;</a>
-				{% else %}
-				<a href="#" clsss="next disabled">后一页&rarr;</a>
-				{% endif %}
+			<li class="next">
+				<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">后一页&rarr;</a>
 			</li>
-		</ul>		
+			{% else %}
+			<li clsss="next disabled">
+				<a href="#">后一页&rarr;</a>
+			</li>
+			{% endif %}
+		</ul>
 	</div>
 </ul>

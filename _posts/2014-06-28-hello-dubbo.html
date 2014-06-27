@@ -11,30 +11,30 @@ title: dubbo笔记
 <p>zookeeper:hadoop子项目，针对大型分布式系统的可靠协调系统，提供配置维护、名字服务、分布式同步、组服务等</p>
 
 <p><strong>zookeeper安装</strong></p>
-<p>步骤一：上传zookeeper-3.6.4.tar.gz文件到/usr/local</p>
+<p>步骤一：上传zookeeper-3.4.6.tar.gz文件到/usr/local</p>
 <p>步骤二：解压文件</p>
 <p>
 	<blockquote>
-		tar zxvf zookeeper-3.6.4.tar.gz
+		tar zxvf zookeeper-3.4.6.tar.gz
 	</blockquote>
 </p>
 <p>步骤三：配置zoo.cfg</p>
 <p>
 	<blockquote>
-		cd zookeeper-3.6.4<br/>
+		cd zookeeper-3.4.6<br/>
 		cp conf/zoo_sample.cfg conf/zoo.cfg
 		vi conf/zoo.cfg
 	</blockquote>
 </p>
 <p>tickTime:zookeeper服务器之间或者客户端与服务器之间维持心跳的间隔，每个tickTime会发送一个心跳，默认值2000。</p>
-<p>dataDir:zookeeper保存数据的目录，日志文件也在这个目录里，设置为/url/local/zookeeper-3.6.4/data。</p>
+<p>dataDir:zookeeper保存数据的目录，日志文件也在这个目录里，设置为/url/local/zookeeper-3.4.6/data。</p>
 <p>clientPort:客户端连接服务端的端口，zookeeper监听这个端口，接受客户端请求。</p>
 
 <p><strong>zookeeper配置JVM</strong></p>
 <p>修改启动脚本zkServer.sh</p>
 <p>
 	<blockquote>
-		cd /usr/local/zookeeper-3.6.4/bin<br/>
+		cd /usr/local/zookeeper-3.4.6/bin<br/>
 		vi zkServer.sh
 	</blockquote>
 </p>
@@ -50,7 +50,7 @@ title: dubbo笔记
 <p><strong>zookeeper启动</strong></p>
 <p>
 	<blockquote>
-		cd /usr/local/zookeeper-3.6.4/bin
+		cd /usr/local/zookeeper-3.4.6/bin
 		sh zkServer.sh start #启动<br/>
         sh zkServer.sh status #状态<br/>
         sh zkServer.sh stop #停止

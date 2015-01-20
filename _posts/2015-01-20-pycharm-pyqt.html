@@ -1,0 +1,100 @@
+---
+layout: bootstrap_layout
+title: pycharm_pyqt
+---
+
+<h2>pycharm-pyqt4</h2>
+<p> File --> Settings --> External Tools --> 单击“ADD”（加号图标） --> 弹出对话框，做如下设置</p>
+<p>1).设置“Qt Designer” -- 这个主要用来设计 Qt界面</p>
+<p>在Qt Designer的设置中，Program选择PyQt安装目录中 designer.exe 的路径</p>
+<p>Work directory 使用变量 $ProjectFileDir$ （点击后面的 Insert macro 按钮可以不用输入双击上屏）</p>
+<p><img src="{{site.img_url}}/2015_01_20/1.png"></p>
+
+<p>2).设置“PyUIC” -- 这个主要是用来将 Qt界面 转换成 py代码</p>
+
+<p>在PyUIC的设置中，其他的都差不多，Program 写入Python的地址，Parameters写入</p>
+
+<p>代码如下:</p>
+<p>C:\Python27\Lib\site-packages\PyQT4\uic\pyuic.py -x $FileName$ -o $FileNameWithoutExtension$.py </p>
+
+<p>把上面的Python路径修改成自己的即可！</p>
+<p>Work directory 使用变量 $FileDir$</p>
+
+<p><img src="{{site.img_url}}/2015_01_20/2.png"></p>
+
+<p>3)设置UI预览<br/>
+
+将参数设置为-p，表示，不生产py文件而直接预览<br/>
+
+参数：C:\Python27\Lib\site-packages\PyQT4\uic\pyuic.py -p  $FileName$ <br/>
+
+目录设置为：$FileDir$
+</p>
+
+<p><img src="{{site.img_url}}/2015_01_20/3.png"></p>
+
+<p>然后，在菜单“Tools”上，就多出了一个“PyQt4”选项。</p>
+
+<p><img src="{{site.img_url}}/2015_01_20/4.png"></p>
+
+<p>
+    补充：
+
+pyuic参数说明：
+
+
+NAME
+       pyuic4 - compile Qt4 user interfaces to Python code
+SYNOPSIS
+       pyuic4 [OPTION]... FILE
+DESCRIPTION
+       pyuic4  takes  a Qt4 user interface description file and compiles it to
+       Python code. It can also show a preview of the user interface.
+OPTIONS
+       -h, --help
+              Show a summary of the options.
+       --version
+              Display the version number of pyuic4 of the version of Qt  which
+              PyQt4 was generated for.
+       -p, --preview
+              Show a preview of the UI instead of generating Python code.
+       -o, --output=FILE
+              Write the generated Python code to FILE instead of stdout.
+       -d, --debug
+              Show  detailed  debugging  information  about  the UI generation
+              process.
+       -x, --execute
+              Generate extra code to test and display the class when  executed
+              as a script.
+       -i, --indent=NUM
+              Set the indentation width to NUM spaces. A TAB character will be
+              used if NUM is 0 (default: 4).
+
+
+翻译：
+-p, --preview
+预览用户界面。
+
+-o, --output
+输出产生的代码到指定文件，而不是console终端上。
+
+-x, --execute
+产生额外的代码来测试和显示类。
+
+
+-d, --debug
+显示调试信息。
+
+
+-i, --indent N
+设置缩进的空格数N，N为0时表示使用tab，缺省N为4，即4个空格。
+
+
+-w, --pyqt3-wrapper
+产生PyQt v3 风格的代码格式。
+
+
+--from-imports
+控制生成的python代码的一个选项，让产生代码中的导入文件是相对于当前目录。
+</p>
+
